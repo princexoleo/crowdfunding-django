@@ -134,7 +134,7 @@ def logout_view(request):
     # Redirect to a success page.
     return redirect('home')
 
-def contact_page(request):
+def contact_view(request):
     contact_form = ContactForm(request.POST or None)
     context ={
         'title':'Contact',
@@ -145,7 +145,7 @@ def contact_page(request):
     # if request.method == 'POST':
     #     print(request.POST)
     #     print(request.POST.get('fullname'))
-    return render(request, 'contact/contact_page.html', context)
+    return render(request, 'contact.html', context)
 
 def login_view(request):
     form  = LoginForm(request.POST or None)
@@ -185,3 +185,27 @@ def register_view(request):
         User.objects.create_user(username=username, password=row_password)
         return redirect('login')
     return render(request, 'accounts/register_page.html', context)
+
+def startup_view(request):
+    context ={
+        'title':'Register',
+        
+    }
+
+    return render(request,'startup.html',context)
+
+def hospital_view(request):
+    context ={
+        'title':'Register',
+       
+    }
+
+    return render(request,'hospital.html',context)
+
+def education_view(request):
+    context ={
+        'title':'Register',
+        
+    }
+
+    return render(request,'education.html',context)

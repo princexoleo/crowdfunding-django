@@ -50,15 +50,15 @@
                                         Services
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="team.html">Education</a>
-                                        <a class="dropdown-item" href="elements.html">Hospital</a>
-                                        <a class="dropdown-item" href="#">Start_Up Projects</a>
+                                        <a class="dropdown-item" href="{% url 'education' %} ">Education</a>
+                                        <a class="dropdown-item" href="{% url 'hospital' %}">Hospital</a>
+                                        <a class="dropdown-item" href="{% url 'startup' %}">Start_Up Projects</a>
                                     </div>
                                 </li>
                                
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact/">Contact</a>
+                                    <a class="nav-link" href=" {% url 'contact' %} ">Contact</a>
                                 </li>
                                 <li class="d-none d-lg-block">
                                     <a class="btn_1" href="#">learn more</a>
