@@ -5,9 +5,13 @@
 {% endblock title %}
 
 {% block content %}
-    <form method='post'> 
+    <div class="container">
+
+     <form method='post'>
            {% csrf_token %}
-           {{ form }}
+           {{ form.as_p }}
            <button type='submit' class=b'tn btn-default'>Register</button>
     </form>
+
+    </div>
 {% endblock content %}

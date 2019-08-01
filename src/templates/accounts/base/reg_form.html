@@ -1,0 +1,60 @@
+{% load static %}
+
+<form class="login100-form validate-form" method="post" action="{% url 'register' %}">
+
+                {% csrf_token %}
+
+					<span class="login100-form-title p-b-34">
+						Sign_up
+					</span>
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+							<input id="first-name" class="input100" type="text" name="first_name" placeholder="first-name">
+							<span class="focus-input100"></span>
+						</div>
+
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+							<input id="last-name" class="input100" type="text" name="last_name" placeholder="last-name">
+							<span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+							<input id="last-name" class="input100" type="text" name="username" placeholder="user name">
+							<span class="focus-input100"></span>
+                    </div>
+
+
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user email">
+								<input id="email" class="input100" type="email" name="email" placeholder="email">
+								<span class="focus-input100"></span>
+                    </div>
+
+                     <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user password">
+							<input id="password" class="input100" type="password" name="password" placeholder="password">
+							<span class="focus-input100"></span>
+                     </div>
+
+
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+							<input id="phone_number" class="input100" type="number" name="phone_number" placeholder="phone">
+							<span class="focus-input100"></span>
+						</div>
+
+
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+							<input id="bank_account_number" class="input100" type="number" name="bank_account_number" placeholder="Bank_Account">
+							<span class="focus-input100"></span>
+						</div>
+
+
+
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+							<input id="nid_number" class="input100" type="number" name="nid_number" placeholder="NID Number">
+							<span class="focus-input100"></span>
+						</div>
+
+
+
+					<div class="container-login100-form-btn">
+						<input class="login100-form-btn" type="submit" value="Register"/>
+					</div>
+				</form>

@@ -2,19 +2,23 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from django import forms
+from django.contrib.auth import get_user_model
+
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(label='First Name', max_length=30, required=False, help_text='Optional.')
     last_name = forms.CharField(label='Last Name', max_length=30, required=False, help_text='Optional.')
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+    nid = forms.CharField(max_length=254, help_text='Required. Inform a valid nid address.')
+    bank = forms.CharField(max_length=254, help_text='Required. Inform a valid bank address.')
+    birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD')
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2','nid','bank', 'birth_date')
 
 
-from django import forms
-from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
@@ -29,6 +33,8 @@ class ContactForm(forms.Form):
             raise forms.ValidationError('Email has to be gmail.com')
         return email
 
+
+# Login
 class LoginForm(forms.Form):
     username = forms.CharField( max_length=50)
     password = forms.CharField(max_length=50,widget= forms.PasswordInput)
@@ -36,8 +42,8 @@ class LoginForm(forms.Form):
 class RegisterForm(forms.Form):
     username = forms.CharField( max_length=50,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'enter username'}))
     email    =forms.EmailField(required=False, widget=forms.EmailInput(attrs={'class':'form-control','placeholder':'enter email'}))
-    password = forms.CharField(max_length=50, widget= forms.PasswordInput)
-    password2 = forms.CharField(label='Confirm Password',max_length=50, widget= forms.PasswordInput)
+    password = forms.CharField(max_length=50, widget= forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'password'}))
+    password2 = forms.CharField(label='Confirm-password',max_length=50, widget= forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm-password'}))
 
     #validation
     def clean_username(self):
