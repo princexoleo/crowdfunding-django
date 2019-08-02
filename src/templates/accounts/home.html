@@ -4,3 +4,12 @@
   Home | CF
 {% endblock title %}
 
+{% block message_content %}
+ <div>
+        {% if messages %}
+            {% for message in messages  %}
+                <li> {{ message }} </li>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock message_content %}

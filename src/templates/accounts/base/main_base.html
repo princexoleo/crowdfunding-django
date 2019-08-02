@@ -25,6 +25,10 @@
     </header>
     <!-- Header part end-->
 
+    {% block messgae_content %}
+    
+    {% endblock messgae_content %}
+
     <!-- banner part start-->
     <section class="banner_part">
         <div class="container">
@@ -35,7 +39,12 @@
                             <h1>Bless others with
                                 your gift</h1>
                             <p>Crowdfunding has a long history with several roots. Books have been crowdfunded for centuries: authors and publishers would advertise book projects in praenumeration or subscription schemes.....</p>
-                            <a href="#" class="btn_2">Start Donation</a>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'donation' %}" class="btn_2">Start Donation</a>
+                            {% else %}
+                                <a href="{% url 'login' %}" class="btn_2">Start Donation</a>
+                                
+                            {% endif %}
                         </div>
                     </div>
                 </div>
