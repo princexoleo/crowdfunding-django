@@ -7,4 +7,9 @@ class DonationForm(forms.ModelForm):
     class Meta:
         model = Donation
         fields = ['amount', 'purpose']
+        widgets = {
+            'amount': forms.NumberInput(attrs={'class': 'myfieldclass', 'placeholder':'enter amount'}),
+            'purpose':forms.Select()
+           
+        }
         exclude =['user']

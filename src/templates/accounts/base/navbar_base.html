@@ -1,7 +1,7 @@
 {% load static %}
 
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"> <img src="{% static 'img/logo.png' %}" alt="logo">  </a>
+                        <a class="navbar-brand" href="{% url 'home' %}"> <img src="{% static 'img/logo.png' %}" alt="logo">  </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
                                 </li>
                                {% if user.is_authenticated %}
                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'home' %}">
+                                    <a class="nav-link" href="{% url 'dashboard' %}">
                                       {{ user.username}}
                                     </a>
                                 </li> 
@@ -45,7 +45,7 @@
 
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown"
+                                    <a class="nav-link dropdown-toggle" href=" {% url 'home' %}" id="navbarDropdown"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Services
                                     </a>

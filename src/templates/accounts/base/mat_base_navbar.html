@@ -1,0 +1,65 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}"> <img src="{% static 'img/logo.png' %}" alt="logo">  </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="ti-menu"></span>
+        </button>
+
+        <div class="collapse navbar-collapse main-menu-item justify-content-end"
+            id="navbarSupportedContent">
+            
+            <ul class="navbar-nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="causes/">Causes</a>
+                </li>
+               {% if user.is_authenticated %}
+               <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                      {{ user.username}}
+                    </a>
+                </li> 
+               <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li> 
+               
+               {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register </a>
+                </li> 
+               
+               {% endif %}
+               
+                   
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href=" {% url 'home' %}" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services
+                    </a>
+                    <div class="dropdown-menu" >
+                        <a class="dropdown-item" href="{% url 'education' %} ">Education</a>
+                        <a class="dropdown-item" href="{% url 'hospital' %}">Hospital</a>
+                        <a class="dropdown-item" href="{% url 'startup' %}">Start_Up Projects</a>
+                    </div>
+                </li>
+               
+
+                <li class="nav-item">
+                    <a class="nav-link" href=" {% url 'contact' %} ">Contact</a>
+                </li>
+                <li class="d-none d-lg-block">
+                    <a class="btn_1" href="#">learn more</a>
+                </li>
+            </ul>
+        </div>
+    </nav>

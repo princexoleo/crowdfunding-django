@@ -48,58 +48,58 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action='{% url 'register' %}'  method='post'>
+					<form class="login100-form validate-form" action='{% url 'register' %}'  method='post'>
                  
-                  {% csrf_token %}
-					
-				<span class="login100-form-title p-b-34">
+							{% csrf_token %}
+						
+						<span class="login100-form-title p-b-34">
 						Sign_up
-					</span>
-					
-					   <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-							
-							  {{ form.first_name.label}}{{ form.first_name}}
-							<span class="focus-input100"></span>
-						</div>
-					
-					    <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-							{{ form.last_name.label}} {{ form.last_name}}
-							<span class="focus-input100"></span>
-						</div>
-
-						  <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-							{{ form.username.label}} {{ form.username}}
-							<span class="focus-input100"></span>
+						</span>
+						
+						<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+						
+						  {{ form.first_name.label}}{{ form.first_name}}
+						<span class="focus-input100"></span>
 						</div>
 						
-					
+						<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+						{{ form.last_name.label}} {{ form.last_name}}
+						<span class="focus-input100"></span>
+						</div>
+						
+						<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+						{{ form.username.label}} {{ form.username}}
+						<span class="focus-input100"></span>
+						</div>
+						
+						
 						<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type email">
-								{{ form.email.label}} {{ form.email}}
-								<span class="focus-input100"></span>
+						  {{ form.email.label}} {{ form.email}}
+						  <span class="focus-input100"></span>
 						</div>
-
+						
 						<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="ype password">
-								{{ form.password1.label}}{{ form.password1}}
-								<span class="focus-input100"></span>
+						  {{ form.password1.label}}{{ form.password1}}
+						  <span class="focus-input100"></span>
 						</div>
-
+						
 						<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type password">
-								{{ form.password2.label}}{{ form.password2}}
-								<span class="focus-input100"></span>
+						  {{ form.password2.label}}{{ form.password2}}
+						  <span class="focus-input100"></span>
 						</div>
-
-			
-							
-					<div class="container-login100-form-btn">
+						
+						
+						
+						<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type='s		
-					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-							<input id="NID_Number" class="input100" type="number" name="nid" placeholder="NID Number">
-							<span class="focus-input100"></span>
+						<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+						<input id="NID_Number" class="input100" type="number" name="nid" placeholder="NID Number">
+						<span class="focus-input100"></span>
 						</div>ubmit'>
-							Sign Up
+						Sign Up
 						</button>
-					</div>
-				</form>
+						</div>
+						</form>
 
 				<div class="login100-more" style="background-image: url({% static 'img/1.jpg' %});"></div>
 			</div>
