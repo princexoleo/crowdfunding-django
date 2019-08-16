@@ -1,0 +1,86 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  
+  {% include 'accounts/base/mat_base_head.html' %}
+  {% include 'accounts/base/home_head.html' %}
+
+
+<body class="login-page sidebar-collapse">
+    <header class="main_menu home_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                <!---navbar area -->
+                {% include 'accounts/base/mat_base_navbar.html' %}
+                </div>
+            </div>
+        </div>
+    </header>
+  <div class="page-header header-filter" style="background-image: url('../assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+          <div class="card card-login">
+            <form class="form" method="POST" action="">
+                {% csrf_token %}
+              <div class="card-header card-header-primary text-center">
+                <h4 class="card-title">Login</h4>
+              </div>
+              <p class="description text-center">Or Be Classical</p>
+              <div class="card-body">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">face</i>
+                    </span>
+                  </div>
+                  
+                  {{ form.username }}
+                </div>
+               
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                  </div>
+                 
+                   {{ form.password }}
+                </div>
+              </div>
+              <div class="footer text-center">
+                <button type='submit' class='btn btn-primary btn-round'>Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer footer-default" >
+        <div class="container">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="http://mleon.pythonanywhere.com//">
+                    CrowdFunding
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+              &copy;
+              <script>
+                  document.write(new Date().getFullYear())
+              </script> <i class="material-icons">favorite</i> by
+              
+          </div>
+        </div>
+      </footer>
+  </div>
+  <!--Main base JS files-->
+{% include 'accounts/base/main_base_js.html' %}
+{% include 'accounts/base/mat_base_js.html' %}
+</body>
+
+</html>

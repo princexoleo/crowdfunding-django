@@ -1,0 +1,102 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  
+  {% include 'accounts/base/mat_base_head.html' %}
+  {% include 'accounts/base/home_head.html' %}
+
+  <body>
+
+  <!-- header part with navbaar-->
+   <header class="main_menu home_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                <!---navbar area -->
+                {% include 'accounts/base/mat_base_navbar.html' %}
+                </div>
+            </div>
+        </div>
+    </header>
+        
+ <!-- banner part start-->
+ <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 offset-lg-5">
+                    <div class="banner_text">
+                        <div class="banner_text_iner">
+                            <h1>Bless others with
+                                your gift</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner part start-->
+  
+
+<div class="main main-raised bg-transparent">
+    <div class="container bg-transparent">
+        <div class="section text-center">
+            <div class="row">
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="card card-pricing bg-dark"><div class="card-body ">
+                        <div class="icon">
+                            <i class="material-icons">account_balance</i>
+                        </div>
+                        <h3 class="card-title">$69 Taka</h3>
+                        <p class="card-description">
+                        This is good 
+                        </p>
+                        <a href="{% url 'dashboard' %}" class="btn btn-white btn-round">Account Balance</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 ml-auto mr-auto">
+                    <div class="card card-pricing bg-dark"><div class="card-body ">
+                        <div class="icon">
+                            <i class="material-icons">gavel</i>
+                        </div>
+                        <h3 class="card-title">Pending</h3>
+                        <p class="card-description">
+                         your request status was by admin
+                        </p>
+                        <a href="{% url 'dashboard' %}" class="btn btn-white btn-round">Cancel</a>
+                    </div>
+                </div>
+
+           
+        </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer footer-default" >
+  <div class="container">
+    <nav class="float-left">
+      <ul>
+        <li>
+          <a href="http://mleon.pythonanywhere.com//">
+              CrowdFunding
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright float-right">
+        &copy;
+        <script>
+            document.write(new Date().getFullYear())
+        </script> <i class="material-icons">favorite</i> by
+        
+    </div>
+  </div>
+</footer>
+
+<!--Main base JS files-->
+{% include 'accounts/base/main_base_js.html' %}
+{% include 'accounts/base/mat_base_js.html' %}
+
+</html>

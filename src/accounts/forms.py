@@ -7,16 +7,37 @@ from django.contrib.auth import get_user_model
 
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(label='First Name', max_length=30, required=False, help_text='Optional.')
-    last_name = forms.CharField(label='Last Name', max_length=30, required=False, help_text='Optional.')
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-    nid = forms.CharField(max_length=254, help_text='Required. Inform a valid nid address.')
-    bank = forms.CharField(max_length=254, help_text='Required. Inform a valid bank address.')
+    first_name = forms.CharField(label='First Name', max_length=30, required=False, help_text='Optional.',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'enter your first name'}))
+    last_name = forms.CharField(label='Last Name', max_length=30, required=False, help_text='Optional.',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'enter your last name'}))
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.', widget=forms.TextInput(attrs={'class':'form-control','placeholder':'enter your eamil'}))
+    nid = forms.CharField(max_length=254, help_text='Required. Inform a valid nid address.',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'enter your nid'}))
+    bank = forms.CharField(max_length=254, help_text='Required. Inform a valid bank address.', widget=forms.TextInput(attrs={'class':'form-control','placeholder':'enter bank accounts no.'}))
     birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD')
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2','nid','bank', 'birth_date')
+        widgets = {
+            'username': forms.TextInput(
+                attrs ={
+                    'class': 'form-control',
+                    'placeholder': 'enter a username'
+                }
+            ),
+            'password1': forms.PasswordInput(
+                attrs ={
+                    'class': 'form-control',
+                    'placeholder': 'enter password'
+                }
+            ),
+            'password2': forms.PasswordInput(
+                attrs ={
+                    'class': 'form-control',
+                    'placeholder': 'confirm password'
+                }
+            ),
+            
+        }
 
 
 
@@ -36,8 +57,8 @@ class ContactForm(forms.Form):
 
 # Login
 class LoginForm(forms.Form):
-    username = forms.CharField( max_length=50)
-    password = forms.CharField(max_length=50,widget= forms.PasswordInput)
+    username = forms.CharField( max_length=50,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'enter username'}))
+    password = forms.CharField(max_length=50,widget= forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'password'}))
 
 class RegisterForm(forms.Form):
     username = forms.CharField( max_length=50,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'enter username'}))

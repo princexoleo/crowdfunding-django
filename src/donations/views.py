@@ -15,7 +15,7 @@ def donation_view(request):
             return redirect('home')
     else:
             form = DonationForm()
-    return render(request,'donations/donation.html', {'form':form})
+    return render(request,'donations/donation_page.html', {'form':form})
 
 # def donation_view(request):
 #     print(request.POST.get('purpose'))

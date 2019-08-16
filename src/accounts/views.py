@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login,get_user_model
 from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, RegisterForm,ContactForm, SignUpForm
+#AJAX
+#import json, pdb
 
 
 # Create your views here
@@ -71,7 +73,7 @@ def login_view(request):
             return redirect('home')
         else:
             print('Login Error')
-    return render(request, 'accounts/login_page.html', context)
+    return render(request, 'dash/login-page.html', context)
 
 def register_view(request):
     form  = RegisterForm(request.POST or None)
@@ -133,4 +135,9 @@ def signup(request):
         form = SignUpForm()
         context['form']= form
 
-    return render(request, 'accounts/register_page.html', context)
+    return render(request, 'dash/register_page.html', context)
+
+
+def dashboard_view(request):
+
+    return render(request, 'dash/dashboard.html',{})
