@@ -22,6 +22,7 @@ class Profile(models.Model):
   bank = models.CharField(max_length=30, blank=True)
   birthdate = models.DateField(null=True, blank=True)
   role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, null=True, blank=True)
+  account_balance =models.FloatField(default=0.0, null=True, blank=True)
 
   def __str__(self):  # __unicode__ for Python 2
     return self.user.username

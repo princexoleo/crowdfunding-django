@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 PURPOSE_TYPE = {
@@ -15,7 +16,8 @@ class Donation(models.Model):
     user    = models.ForeignKey(User, on_delete=models.CASCADE)
     amount  = models.IntegerField()
     purpose = models.CharField(max_length=2, choices=PURPOSE_TYPE)
-    status  = models.BooleanField(choices=STATUS_CHOICE, null=False)
+    status  = models.BooleanField(choices=STATUS_CHOICE, null=True)
+    created_date = models.DateTimeField(default= timezone.now)
 
     def __str__(self):
         return self.user.username

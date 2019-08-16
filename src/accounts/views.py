@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login,get_user_model
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login,get_user_model,logout 
 from .forms import LoginForm, RegisterForm,ContactForm, SignUpForm
+from donations.models import Donation
 #AJAX
 #import json, pdb
 
@@ -125,7 +125,9 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
-            user.profile.birth_date = form.cleaned_data.get('birth_date')
+            user.profile.birthdate = form.cleaned_data.get('birth_date')
+            user.profile.nid = form.cleaned_data.get('nid')
+            user.profile.bank = form.cleaned_data.get('bank')
             user.save()
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
@@ -138,6 +140,15 @@ def signup(request):
     return render(request, 'dash/register_page.html', context)
 
 
-def dashboard_view(request):
+def dashboard_view(request): 
+    try:
+        user_info = User.objects.get(pk=request.user.id)
+        donation_status = Donation.objects.filter(user=user_info).order_by('created_date').get()
+        s = donation_status.status
+        print(s)
+    except Donation.DoesNotExists:
+        donation_status = False
+        s = False
+    
 
-    return render(request, 'dash/dashboard.html',{})
+    return render(request, 'dash/dashboard.html',{'status':s})

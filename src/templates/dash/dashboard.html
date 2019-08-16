@@ -64,10 +64,18 @@
                         <div class="icon">
                             <i class="material-icons">gavel</i>
                         </div>
+                        {% if status %}
+                        <h3 class="card-title">Accepted</h3>
+                        <p class="card-description">
+                         Succesfully accepted by admin check your balance
+                        </p>
+                        {% else %}
                         <h3 class="card-title">Pending</h3>
                         <p class="card-description">
                          your request status was by admin
                         </p>
+                        {% endif %}
+                        
                         <a href="{% url 'dashboard' %}" class="btn btn-white btn-round">Cancel</a>
                     </div>
                 </div>
