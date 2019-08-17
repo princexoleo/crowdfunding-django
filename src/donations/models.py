@@ -25,5 +25,9 @@ class Donation(models.Model):
         return self.amount
     def donation_purpose(self):
         return self.purpose
+    def donation_status(self):
+        return self.status
+    def donation_created_date(self):
+        return self.created_date
     
 

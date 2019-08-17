@@ -25,13 +25,13 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = '41kgd_+7#lwg+^@8uml^0sxrxjm_ys!icm@yg*tj=xg2#wi$w0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = ['mleon.pythonanywhere.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mleon.pythonanywhere.com']
+#ALLOWED_HOSTS = []
 
-#AUTH_USER_MODEL = 'accounts.CustomUser' # new
+AUTH_USER_MODEL = 'accounts.CustomUser' # new
 
 
 # Application definition

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login,get_user_model,logout 
 from .forms import LoginForm, RegisterForm,ContactForm, SignUpForm
+from .models import Profile
 from donations.models import Donation
 #AJAX
 #import json, pdb
@@ -140,15 +141,22 @@ def signup(request):
     return render(request, 'dash/register_page.html', context)
 
 
-def dashboard_view(request): 
+def dashboard_view(request):
+    user_instance = User.objects.get(pk=request.user.id)
+    user_info = Profile.objects.get(user=user_instance)
+    #print(user_instance)
+    balance = user_info.account_balance
+    context ={
+         'status':'null',
+         'user_balance': balance
+    }
     try:
-        user_info = User.objects.get(pk=request.user.id)
-        donation_status = Donation.objects.filter(user=user_info).order_by('created_date').get()
-        s = donation_status.status
-        print(s)
+        #donation_status = Donation.objects.filter(user=user_instance).order_by('created_date').distinct()
+        donate_status = Donation.objects.filter(user=user_instance).values_list('status', flat=True).distinct()
+        print(donate_status[0])
+        context['status'] = donate_status[0]
     except Donation.DoesNotExists:
-        donation_status = False
-        s = False
+        context['status'] = False
     
 
-    return render(request, 'dash/dashboard.html',{'status':s})
+    return render(request, 'dash/dashboard.html',context)
