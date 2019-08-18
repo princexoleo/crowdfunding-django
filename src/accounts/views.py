@@ -148,15 +148,46 @@ def dashboard_view(request):
     balance = user_info.account_balance
     context ={
          'status':'null',
-         'user_balance': balance
+         'user_balance': balance,
+         'user_profile': user_info
     }
     try:
         #donation_status = Donation.objects.filter(user=user_instance).order_by('created_date').distinct()
-        donate_status = Donation.objects.filter(user=user_instance).values_list('status', flat=True).distinct()
-        print(donate_status[0])
-        context['status'] = donate_status[0]
+        #donate_status = Donation.objects.filter(user=user_instance).values_list('status', flat=True).distinct()
+        user_donation = Donation.objects.filter(user = user_instance).order_by('-created_date')
+        context['history'] = Donation.objects.filter(user = user_instance).order_by('-created_date')
+        if len(user_donation) > 0:
+            context['status'] = user_donation[0].status
+            if user_donation[0].status == True and user_donation[0].transaction_status == False:
+                d_amount = user_donation[0].amount
+                if user_donation[0].donate_type == 'RD':
+                    balance+=d_amount
+                    # update userprofile balance 
+                    user_info.account_balance = balance
+                    user_donation[0].transaction_status = True # Transaction completed
+                elif user_donation[0].donate_type == 'GD':
+                    if balance > 0 :
+                        balance-=d_amount # check enough balance in account 
+                        user_info.account_balance = balance
+                        user_donation[0].transaction_status = True # Transaction completed
+                user_info.save()
+                context['msg'] = 'Accepted!!'
+                context['user_balance'] = user_info.account_balance
+            elif user_donation[0].transaction_status == True and user_donation[0].status == False:
+                context['msg'] = 'Sorry your requested Rejected!!'
+            else:
+                context['msg'] = 'Pending'
+        else :
+            pass
+        # print(donate_status[0])
+        # context['status'] = donate_status[0]
     except Donation.DoesNotExists:
         context['status'] = False
+        context['msg'] = 'You have not requested yet!!' 
     
 
     return render(request, 'dash/dashboard.html',context)
+
+
+def comming_soon(request):
+    return render(request,'message/comming_soon.html',{})

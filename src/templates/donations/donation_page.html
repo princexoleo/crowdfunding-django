@@ -36,8 +36,18 @@
                       <i class="material-icons">payment</i>
                     </span>
                   </div>
-                  <label for="ammount"> {{ form.amount.label_tag}} </label>
+                  <label for="amount"> {{ form.amount.label_tag}} </label>
                   {{ form.amount }}
+                </div>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="form-group-text">
+                      <i class="material-icons">loyalty</i>
+                    </span>
+                  </div>
+                  <label for="donate_type"> {{ form.donate_type.label_tag}} </label>
+                  {{ form.donate_type }}
                 </div>
                
                 <div class="input-group">

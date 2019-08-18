@@ -5,9 +5,9 @@
   {% include 'accounts/base/mat_base_head.html' %}
   {% include 'accounts/base/home_head.html' %}
 
-  {% block title_mat %}
+  <!-- {% block title_mat %}
    Dashboard | CF
-  {% endblock title_mat %}
+  {% endblock title_mat %} -->
 
   <body>
 
@@ -39,6 +39,8 @@
         </div>
     </section>
     <!-- banner part start-->
+
+   
   
 
 <div class="main main-raised bg-transparent">
@@ -65,26 +67,179 @@
                             <i class="material-icons">gavel</i>
                         </div>
                         {% if status %}
-                        <h3 class="card-title">Accepted</h3>
+                        <h3 class="card-title"> {{ msg}} </h3>
                         <p class="card-description">
                          Succesfully accepted by admin check your balance
                         </p>
                         {% else %}
-                        <h3 class="card-title">Pending</h3>
+                        <h3 class="card-title">{{ msg}}</h3>
                         <p class="card-description">
-                         your request status was by admin
+                         your request status was underchecking by admin
                         </p>
                         {% endif %}
                         
                         <a href="{% url 'dashboard' %}" class="btn btn-white btn-round">Cancel</a>
                     </div>
                 </div>
-
-           
         </div>
     </div>
   </div>
 </div>
+
+ <!-- Profile part -->
+ <div class="profile-page sidebar-collapse">
+    <div class="main main-raised">
+        <div class="profile-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 ml-auto mr-auto">
+                <div class="profile">
+                  <div class="avatar">
+                    <img src="{% static 'assets/img/faces/christian.jpg' %}" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <div class="name">
+                    <h3 class="title">{{ user.first_name }} {{ user.last_name }}</h3>
+                    <h6>{{user_profile.location}}</h6>
+                    <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                    <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="description text-center">
+              <p>An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+            </div>
+            <div class="row">
+              <div class="col-md-6 ml-auto mr-auto">
+                <div class="profile-tabs">
+                  <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
+                        <i class="material-icons">email</i> Email
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#works" role="tab" data-toggle="tab">
+                        <i class="material-icons">palette</i> Bank
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                        <i class="material-icons">favorite</i> Nid
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#history" role="tab" data-toggle="tab">
+                              <i class="material-icons">history</i> history
+                            </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="tab-content tab-space">
+              <div class="tab-pane active text-center" id="studio">
+                    <div class="card">
+                            <div class="card-header card-header-icon card-header-danger">
+                                <div class="card-icon">
+                                 <i class="material-icons">language</i>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ user.email}}</h4>        
+                            </div>
+                        </div>
+              </div>
+              <div class="tab-pane text-center" id="works">
+                    <div class="card">
+                            <div class="card-header card-header-icon card-header-success">
+                                <div class="card-icon">
+                                 <i class="material-icons">language</i>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ user_profile.bank}}</h4>        
+                            </div>
+                        </div>
+                
+              </div>
+
+                <div class="tab-pane text-center" id="favorite">
+                    <div class="card">
+                        <div class="card-header card-header-icon card-header-rose">
+                            <div class="card-icon">
+                             <i class="material-icons">language</i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">{{ user_profile.nid}}</h4>        
+                        </div>
+                    </div>
+                </div>
+
+                <!--Donation  History -->
+                <div class="tab-pane text-center" id="history">
+                        <div class="card">
+                            <div class="card-header card-header-icon card-header-success">
+                                <div class="card-icon">
+                                 <i class="material-icons">history</i>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                      <!-- History tabale here -->
+                                      {% if history is not None %}
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Amount</th>
+                                                    <th class="text-center">Donation Type</th>
+                                                    <th class="text-center">Request Date</th>
+                                                    <th class="text-center">Status</th>
+                                                </tr> 
+                                            </thead>
+
+                                            <tbody>
+                                                    {% for his in history %}
+                                                    {% comment %} Histor table Table {% endcomment %}
+                                                    <tr>
+                                                        <td> {{ his.amount }}</td>
+                                                        {% ifequal  his.donate_type "GD" %}
+                                                            <td> Give Donation</td>
+                                                        {% else %}
+                                                            <td> Take Donation </td>
+                                                        {% endifequal %}
+
+                                                        <td> {{ his.created_date }}</td>
+
+                                                        {% if  his.status  %}
+                                                            <td> accepted</td>
+                                                        {% else %}
+                                                            <td> rejected</td>
+                                                        {% endif %}
+                                                    </tr>
+                                                    {% endfor %}
+
+                                            </tbody>
+                                      
+                                      {% endif %}
+                                        </table>
+                            </div>
+                        </div>
+                </div>
+
+                
+              </div>
+          
+
+            </div>
+          </div>
+        </div>
+      </div>
+ </div>
+
+<!-- Profile part end here -->
+
 
 <footer class="footer footer-default" >
   <div class="container">
