@@ -31,7 +31,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['mleon.pythonanywhere.com']
 #ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'accounts.CustomUser' # new
+#AUTH_USER_MODEL = 'accounts.CustomUser' # new
 
 
 # Application definition
